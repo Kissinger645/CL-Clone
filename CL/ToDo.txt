@@ -2,7 +2,7 @@
 
 Add categories for each city
 
-add routing
+
 
 show user postings on userpage
 

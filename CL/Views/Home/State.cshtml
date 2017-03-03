@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "State";
+}
+
+<div>
+    <h3>Show every city in the state</h3>
+    <ul>
+        @foreach (var city in ViewBag.Cities)
+        {
+            <li><a href="/c/@city.CityName">@city.CityName</a></li>
+        }
+    </ul>
+</div>
+

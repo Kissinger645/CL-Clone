@@ -29,5 +29,11 @@ namespace CL.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<ImageUpload> ImageUploads { get; set; }
+        public DbSet<PostModel> Posts { get; set; }
+        public DbSet<LocationModel> Locations { get; set; }
+        public DbSet<CatModel> Categories { get; set; }
+        public DbSet<UserModel> CLUsers { get; set; }
     }
 }

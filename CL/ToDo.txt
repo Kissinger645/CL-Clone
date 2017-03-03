@@ -1,0 +1,15 @@
+﻿Let user pick city on User Settings page
+
+Add categories for each city
+
+add routing
+
+show user postings on userpage
+
+add/delete posts
+
+New Post page
+-upload pictures
+-select categorie
+-item description
+

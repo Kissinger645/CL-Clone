@@ -205,6 +205,10 @@
     <Compile Include="Migrations\201703031637053_initial.Designer.cs">
       <DependentUpon>201703031637053_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703041203260_userfix.cs" />
+    <Compile Include="Migrations\201703041203260_userfix.Designer.cs">
+      <DependentUpon>201703041203260_userfix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CatModel.cs" />
@@ -281,6 +285,7 @@
     <Content Include="Views\Home\Settings.cshtml" />
     <Content Include="Views\Home\State.cshtml" />
     <Content Include="Views\Home\City.cshtml" />
+    <Content Include="Views\Home\ChangeCity.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -296,6 +301,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201703031637053_initial.resx">
       <DependentUpon>201703031637053_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703041203260_userfix.resx">
+      <DependentUpon>201703041203260_userfix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

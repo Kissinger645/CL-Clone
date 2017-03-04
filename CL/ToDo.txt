@@ -1,6 +1,6 @@
 ﻿Let user pick city on User Settings page
 
-Add categories for each city
+Pass city info to subcategorie listings
 
 
 

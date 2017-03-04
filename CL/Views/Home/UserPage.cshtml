@@ -3,9 +3,15 @@
     ViewBag.Title = "UserPage";
 }
 
-<div>
-    <row><h4>Current city: Greenville</h4> <h5>Change(actionlink to choose new city)</h5></row>
-    Show Posts
+<div class="container">
+    <h4>Current city: @ViewBag.MyCity</h4> 
+    <h6>@Html.ActionLink("Change", "ChangeCity", "Home")</h6>
 
+    <h1>-----------------------------------------------------</h1>
+
+    <h4>Show Posts</h4>
+    <ul>
+        List my posts
+    </ul>
 </div>
 

@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "ChangeCity";
+}
+
+
+<div class="container">
+    <h2>Change Home City</h2>
+        @using (Html.BeginForm("ChangeCity", "Home", FormMethod.Post))
+        {
+            @Html.DropDownList("Cities", "--------SELECT------")
+            <input type="submit" value="Submit" />
+        }
+</div>
+

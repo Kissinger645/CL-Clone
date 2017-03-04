@@ -1,4 +1,5 @@
 ﻿using CL.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,20 @@ namespace CL.Controllers
                 return View();
         }
 
-        [Route("u/{UserName}")]
+        [Authorize]
         public ActionResult UserPage()
         {
+            var thisUser = User.Identity.GetUserId();
+            var myLoc = db.CLUsers.FirstOrDefault(u => u.OwnerId == thisUser);
+            if (myLoc == null)
+            {
+                ViewBag.MyCity = "Not Set";
+            }
+            else
+            {
+                ViewBag.MyCity = myLoc.Location.CityName;
+            }
+            
             return View();
         }
 
@@ -34,10 +46,37 @@ namespace CL.Controllers
         [Route("c/{City}")]
         public ActionResult City(string City)
         {
-            ViewBag.SubSale = db.Categories.Where(c => c.Main == "Sale");
-            ViewBag.SubHousing = db.Categories.Where(c => c.Main == "Housing");
-            ViewBag.SubHousing = db.Categories.Where(c => c.Main == "Services");
+            string city = City;
+            ViewBag.Sale = db.Categories.Where(c => c.Main == "Sale");
+            ViewBag.Housing = db.Categories.Where(c => c.Main == "Housing");
+            ViewBag.Services = db.Categories.Where(c => c.Main == "Services");
             return View();
+        }
+        public ActionResult ChangeCity()
+        {
+            ViewBag.Cities = new SelectList(db.Locations, "Id","CityName");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangeCity(int Cities)
+        {
+            var thisUser = User.Identity.GetUserId();
+            var hasLocation = db.CLUsers.FirstOrDefault(u => u.OwnerId == thisUser);
+            if (hasLocation != null)
+            {
+                hasLocation.CityId = Cities;
+            }
+            else
+            {
+                UserModel cluser = new UserModel();
+                cluser.OwnerId = thisUser;
+                cluser.CityId = Cities;
+                db.CLUsers.Add(cluser);
+            }
+            
+            db.SaveChanges();
+            return RedirectToAction("UserPage");
         }
     }
 }

@@ -3,13 +3,29 @@
     ViewBag.Title = "City";
 }
 
-<div>
-    <h3>Show Categories</h3>
+<div class="container">
+    <h3>Categories</h3>
+
+    <h4>For Sale</h4>
     <ul>
-        <li><a href="/s/SC">Housing</a></li>
-        <li><a href="/s/SC">For Sale</a></li>
-        <li><a href="/s/SC">Services</a></li>
+        @foreach (var cat in ViewBag.Sale)
+        {
+            <li><a href="/c/{city}/@cat.Sub">@cat.Sub</a></li>
+        }
+    </ul>
+    <h4>Housing</h4>
+    <ul>
+        @foreach (var cat in ViewBag.Housing)
+        {
+            <li><a href="/c/{city}/@cat.Sub">@cat.Sub</a></li>
+        }
+    </ul>
+
+    <h4>Services</h4>
+    <ul>
+        @foreach (var cat in ViewBag.Services)
+        {
+            <li><a href="/c/{city}/@cat.Sub">@cat.Sub</a></li>
+        }
     </ul>
 </div>
-
-

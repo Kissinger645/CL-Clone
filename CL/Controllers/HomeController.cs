@@ -32,6 +32,8 @@ namespace CL.Controllers
             {
                 ViewBag.MyCity = myLoc.Location.CityName;
             }
+
+            ViewBag.MyPosts = db.Posts.Where(u => u.OwnerId == thisUser);
             
             return View();
         }

@@ -1,8 +1,1 @@
-﻿[Authorize]
-        public ActionResult UserPage()
-        {
-            var thisUser = User.Identity.GetUserId();
-            var myLoc = db.CLUsers.First(u => u.OwnerId == thisUser);
-            ViewBag.MyCity = myLoc.Location.CityName;
-            return View();
-        }
+﻿

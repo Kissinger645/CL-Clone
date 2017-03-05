@@ -7,11 +7,14 @@
     <h4>Current city: @ViewBag.MyCity</h4> 
     <h6>@Html.ActionLink("Change", "ChangeCity", "Home")</h6>
 
-    <h1>-----------------------------------------------------</h1>
+    <h2>-----------------------------------------------------</h2>
 
-    <h4>Show Posts</h4>
+    <h4>My Postings</h4>
     <ul>
-        List my posts
+        @foreach (var post in ViewBag.MyPosts)
+        {
+            <li>@post.Title</li>
+        }
     </ul>
 </div>
 

@@ -1,15 +1,9 @@
-﻿Let user pick city on User Settings page
-
+﻿
 Pass city info to subcategorie listings
-
-
 
 show user postings on userpage
 
-add/delete posts
 
-New Post page
--upload pictures
--select categorie
--item description
+make different layout options
+
 

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Upload";
+}
+
+<div class="container">
+    <h3>Add Picture</h3>
+    @using (Html.BeginForm("Upload", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <p>
+            <input type="file" name="File" class="form-control" />
+            <input type="submit" value="Add Picture" class="btn btn-primary" />
+        </p>
+    }
+    <h5>@Html.ActionLink("No Screenshot", "UserPage", "Home")</h5>
+</div>

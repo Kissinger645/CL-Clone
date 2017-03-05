@@ -1,0 +1,27 @@
+﻿@model CL.Models.PostModel
+@{
+    ViewBag.Title = "Create";
+}
+<div class="container">
+    <h3>New Post</h3>
+
+    @using (Html.BeginForm("Create", "Post", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <h5>Title</h5>
+        @Html.TextBoxFor(m => m.Title)
+        <h5>Description</h5>
+        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @rows = 3 })
+        <h5>Price</h5>
+        @Html.TextBoxFor(m => m.Price)
+        <h5>Category</h5>
+        @Html.DropDownList("Categories", "-----SELECT-----")
+        <h5>Add picture on next step</h5>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Next step" class="btn btn-default" />
+                </div>
+            </div>
+        
+    }
+</div>

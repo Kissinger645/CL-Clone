@@ -4,16 +4,14 @@
 }
 
 <div class="container">
-    <h4>Current city: @ViewBag.MyCity</h4> 
+    <h3>Current city: @ViewBag.MyCity</h3> 
     <h6>@Html.ActionLink("Change", "ChangeCity", "Home")</h6>
 
-    <h2>-----------------------------------------------------</h2>
-
-    <h4>My Postings</h4>
+    <h3>My Postings</h3>
     <ul>
         @foreach (var post in ViewBag.MyPosts)
         {
-            <li>@post.Title</li>
+            <li><a href="/Post/Details/@post.Id">@post.Title</a></li>
         }
     </ul>
 </div>

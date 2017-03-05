@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -72,6 +73,47 @@ namespace CL.Controllers
             return RedirectToAction("UserPage", "Home");
         }
 
+        public ActionResult Details(int? id)
+        {
+            var cId = id.ToString();
+            if (db.ImageUploads.Where(u => u.Caption == cId).FirstOrDefault() != null)
+            {
+                var pic = db.ImageUploads.Where(u => u.Caption == cId).FirstOrDefault();
+                ViewBag.Picture = pic.FilePath;
+            }
+
+            PostModel post = db.Posts.Find(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Post = post;
+            return View();
+        }
+        public ActionResult Delete(int? Pid)
+        {
+            if (Pid == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PostModel post = db.Posts.Find(Pid);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            return View(post);
+        }
+
+        // POST: Post/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int Pid)
+        {
+            PostModel post = db.Posts.Find(Pid);
+            db.Posts.Remove(post);
+            db.SaveChanges();
+            return RedirectToAction("UserPage", "Home");
+        }
 
 
 

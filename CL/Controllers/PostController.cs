@@ -90,6 +90,25 @@ namespace CL.Controllers
             ViewBag.Post = post;
             return View();
         }
+
+        [Route("Listing/{id}")]
+        public ActionResult Listing(int? id)
+        {
+            var cId = id.ToString();
+            if (db.ImageUploads.Where(u => u.Caption == cId).FirstOrDefault() != null)
+            {
+                var pic = db.ImageUploads.Where(u => u.Caption == cId).FirstOrDefault();
+                ViewBag.Picture = pic.FilePath;
+            }
+
+            PostModel post = db.Posts.Find(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Post = post;
+            return View();
+        }
         public ActionResult Delete(int? Pid)
         {
             if (Pid == null)

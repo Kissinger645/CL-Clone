@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Listing";
+}
+<div class="container" style="margin: auto;">
+    <section style="margin:auto;">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="photobox">
+                    <img class="thumb" src="@ViewBag.Picture" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <div>
+        <h4>Post</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Title
+            </dt>
+
+            <dd>
+                @ViewBag.Post.Title
+            </dd>
+
+            <dt>
+                Description
+            </dt>
+
+            <dd>
+                @ViewBag.Post.Description
+            </dd>
+
+            <dt>
+                Posted
+            </dt>
+
+            <dd>
+                @ViewBag.Post.Posted
+            </dd>
+            <dt>
+                Price
+            </dt>
+
+            <dd>
+                @ViewBag.Post.Price
+            </dd>
+            <dt>
+                Location
+            </dt>
+
+            <dd>
+                @ViewBag.Post.City.CityName
+            </dd>
+            <dt>
+                Category
+            </dt>
+
+            <dd>
+                @ViewBag.Post.Category.Sub
+            </dd>
+
+        </dl>
+    </div>
+</div>

@@ -232,6 +232,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.def.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -301,6 +302,7 @@
     <Content Include="Views\Post\Details.cshtml" />
     <Content Include="Views\Post\Delete.cshtml" />
     <Content Include="Views\Home\ViewPosts.cshtml" />
+    <Content Include="Views\Post\Listing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

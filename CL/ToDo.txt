@@ -1,5 +1,4 @@
 ﻿
-Pass city info to subcategorie listings
 
 make different layout options
 

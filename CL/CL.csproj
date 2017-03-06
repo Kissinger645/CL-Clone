@@ -303,6 +303,8 @@
     <Content Include="Views\Post\Delete.cshtml" />
     <Content Include="Views\Home\ViewPosts.cshtml" />
     <Content Include="Views\Post\Listing.cshtml" />
+    <Content Include="Views\Home\ViewPostsGrid.cshtml" />
+    <Content Include="Views\Home\ViewPostsThumb.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

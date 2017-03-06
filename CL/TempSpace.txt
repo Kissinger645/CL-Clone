@@ -16,4 +16,14 @@
             return View();
         }
 
-		<a href="/c/{city}/@cat.Sub">
+		ViewBag.Posts = db.Posts.Where(p => p.CatId == cat.Id && p.CityId == city.Id).ToList();
+
+		var anyPosts = db.Posts.Where(p => p.CatId == cat.Id && p.CityId == city.Id).ToList();
+            if (anyPosts.Count > 0)
+            {
+                ViewBag.Posts = anyPosts;
+            }
+            else
+            {
+                ViewBag.Posts = "Sorry, there are currently no postings in this category";
+            }

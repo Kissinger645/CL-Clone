@@ -1,4 +1,4 @@
-﻿
+﻿Get notice to show up if no posts match criteria
 
 make different layout options
 

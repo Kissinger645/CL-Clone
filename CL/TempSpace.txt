@@ -27,3 +27,23 @@
             {
                 ViewBag.Posts = "Sorry, there are currently no postings in this category";
             }
+			 
+
+
+			[Route("c/{City}/{Sub}")]
+        public ActionResult ViewPosts(string City, string Sub)
+        {
+            ViewBag.Route = $"City: {City} - Category: {Sub}";
+            var cat = db.Categories.FirstOrDefault(c => c.Sub == Sub);
+            var city = db.Locations.FirstOrDefault(c => c.CityName == City);
+            var posts = db.Posts.Where(p => p.CatId == cat.Id && p.CityId == city.Id).ToList();
+            if (posts == null)
+            {
+                ViewBag.Posts = "Sorry, there are currently no postings in this category";
+            }
+            else
+            {
+                ViewBag.Posts = posts;
+            }
+            return View();
+        }

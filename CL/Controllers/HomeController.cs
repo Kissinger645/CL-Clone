@@ -54,21 +54,21 @@ namespace CL.Controllers
             ViewBag.Services = db.Categories.Where(c => c.Main == "Services");
             return View();
         }
-
+        
         [Route("c/{City}/{Sub}")]
         public ActionResult ViewPosts(string City, string Sub)
         {
             ViewBag.Route = $"City: {City} - Category: {Sub}";
             var cat = db.Categories.FirstOrDefault(c => c.Sub == Sub);
             var city = db.Locations.FirstOrDefault(c => c.CityName == City);
-            var posts = db.Posts.Where(p => p.CatId == cat.Id && p.CityId == city.Id).ToList();
-            if (posts == null)
+         
+            if (db.Posts.Where(p => p.CatId == cat.Id && p.CityId == city.Id).ToList() == null)
             {
                 ViewBag.Posts = "Sorry, there are currently no postings in this category";
             }
             else
             {
-                ViewBag.Posts = posts;
+                ViewBag.Posts = db.Posts.Where(p => p.CatId == cat.Id && p.CityId == city.Id).ToList();
             }
             return View();
         }

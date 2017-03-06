@@ -56,9 +56,11 @@ namespace CL.Controllers
         }
         
         [Route("c/{City}/{Sub}")]
-        public ActionResult ViewPosts(string City, string Sub)
+        public ActionResult ViewPosts(string City, string Sub, string sortOrder)
         {
             ViewBag.Route = $"City: {City} - Category: {Sub}";
+            ViewBag.Link = $"{City}/{Sub}";
+
             var cat = db.Categories.FirstOrDefault(c => c.Sub == Sub);
             var city = db.Locations.FirstOrDefault(c => c.CityName == City);
          
@@ -77,6 +79,8 @@ namespace CL.Controllers
         public ActionResult ViewPostsThumb(string City, string Sub)
         {
             ViewBag.Route = $"City: {City} - Category: {Sub}";
+            ViewBag.Link = $"{City}/{Sub}";
+
             var cat = db.Categories.FirstOrDefault(c => c.Sub == Sub);
             var city = db.Locations.FirstOrDefault(c => c.CityName == City);
             var posts = db.Posts.Where(p => p.CatId == cat.Id && p.CityId == city.Id).ToList();
@@ -91,10 +95,12 @@ namespace CL.Controllers
             return View();
         }
 
-        [Route("c/grid/{City}/{Sub}")]
-        public ActionResult ViewPostsGrid(string City, string Sub)
+        [Route("c/gal/{City}/{Sub}")]
+        public ActionResult ViewPostsGal(string City, string Sub)
         {
             ViewBag.Route = $"City: {City} - Category: {Sub}";
+            ViewBag.Link = $"{City}/{Sub}";
+
             var cat = db.Categories.FirstOrDefault(c => c.Sub == Sub);
             var city = db.Locations.FirstOrDefault(c => c.CityName == City);
             var posts = db.Posts.Where(p => p.CatId == cat.Id && p.CityId == city.Id).ToList();

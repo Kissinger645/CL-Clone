@@ -1,15 +1,20 @@
 ﻿
 @{
-    ViewBag.Title = "ViewPosts";
+    ViewBag.Title = "ViewPostsGrid";
 }
 <div class="container">
     <h5>@ViewBag.Route</h5>
     <h6><a href="/c/@ViewBag.Link">List</a> | <a href="/c/thumb/@ViewBag.Link">Thumb</a> | <a href="/c/gal/@ViewBag.Link">Gallery</a></h6>
     <h6>Sorted by Price: <a href="">Highest</a> - <a href="">Lowest</a> | Time: <a href="">Newest</a> - <a href="">Oldest</a></h6>
-    <ul>
+    <
         @foreach (var post in ViewBag.Posts)
         {
-            <li class="list-group-item"><h3><a href="/Listing/@post.Id">@post.Title</a></h3> <h5>Price: $@post.Price</h5>  <h5>Posted: @post.Posted</h5></li>
+            <section>
+                <p>
+                    <img alt="Bootstrap Image Preview" src="http://lorempixel.com/640/480/" />
+                    <h3><a href="/Listing/@post.Id">@post.Title</a></h3> 
+                </p>
+            </section>
         }
-    </ul>
+    <
 </div>

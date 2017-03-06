@@ -1,49 +1,15 @@
-﻿public ActionResult PostDetails(int? id)
-        {
-            var cId = id.ToString();
-            if (db.ImageUploads.Where(u => u.Caption == cId).FirstOrDefault() != null)
-            {
-                var pic = db.ImageUploads.Where(u => u.Caption == cId).FirstOrDefault();
-                ViewBag.Picture = pic.FilePath;
-            }
+﻿ ViewBag.PriceSortParm = String.IsNullOrEmpty(sortOrder) ? "price_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
-            PostModel post = db.Posts.Find(id);
-            if (post == null)
+switch (sortOrder)
             {
-                return HttpNotFound();
+                case "price_desc":
+                    ViewBag.Posts = db.Posts.Where(p => p.CatId == cat.Id && p.CityId == city.Id).OrderByDescending(p => p.Price).ToList();
+                    break;
+                case "price_asc":
+                    ViewBag.Posts = db.Posts.Where(p => p.CatId == cat.Id && p.CityId == city.Id).OrderBy(p => p.Price).ToList();
+                    break;
+                default:
+                    ViewBag.Posts = db.Posts.Where(p => p.CatId == cat.Id && p.CityId == city.Id).ToList();
+                    break;
             }
-            ViewBag.Post = post;
-            return View();
-        }
-
-		ViewBag.Posts = db.Posts.Where(p => p.CatId == cat.Id && p.CityId == city.Id).ToList();
-
-		var anyPosts = db.Posts.Where(p => p.CatId == cat.Id && p.CityId == city.Id).ToList();
-            if (anyPosts.Count > 0)
-            {
-                ViewBag.Posts = anyPosts;
-            }
-            else
-            {
-                ViewBag.Posts = "Sorry, there are currently no postings in this category";
-            }
-			 
-
-
-			[Route("c/{City}/{Sub}")]
-        public ActionResult ViewPosts(string City, string Sub)
-        {
-            ViewBag.Route = $"City: {City} - Category: {Sub}";
-            var cat = db.Categories.FirstOrDefault(c => c.Sub == Sub);
-            var city = db.Locations.FirstOrDefault(c => c.CityName == City);
-            var posts = db.Posts.Where(p => p.CatId == cat.Id && p.CityId == city.Id).ToList();
-            if (posts == null)
-            {
-                ViewBag.Posts = "Sorry, there are currently no postings in this category";
-            }
-            else
-            {
-                ViewBag.Posts = posts;
-            }
-            return View();
-        }

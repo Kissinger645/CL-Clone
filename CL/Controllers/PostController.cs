@@ -20,6 +20,7 @@ namespace CL.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.Categories = new SelectList(db.Categories, "Id", "Sub");

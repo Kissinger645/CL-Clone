@@ -1,5 +1,7 @@
-﻿Get notice to show up if no posts match criteria
+﻿Sort by price
 
-make different layout options
+Make listing pictures match listing
+
+
 
 

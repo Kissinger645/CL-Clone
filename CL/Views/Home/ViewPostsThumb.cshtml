@@ -2,39 +2,16 @@
 @{
     ViewBag.Title = "ViewPostsThumb";
 }
-
 <div class="container-fluid">
+    <h5>@ViewBag.Route</h5>
+    <h6><a href="/c/@ViewBag.Link">List</a> | <a href="/c/thumb/@ViewBag.Link">Thumb</a> | <a href="/c/gal/@ViewBag.Link">Gallery</a></h6>
+    <h6>Sorted by Price: <a href="">Highest</a> - <a href="">Lowest</a> | Time: <a href="">Newest</a> - <a href="">Oldest</a></h6>
     <div class="row">
-        <div class="col-md-4">
-            <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
-        </div>
-        <div class="col-md-4">
-            <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
-        </div>
-        <div class="col-md-4">
-            <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
-        </div>
-        <div class="col-md-4">
-            <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
-        </div>
-        <div class="col-md-4">
-            <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
-        </div>
-        <div class="col-md-4">
-            <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
-        </div>
-        <div class="col-md-4">
-            <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
-        </div>
+        @foreach (var post in ViewBag.Posts)
+        {
+            <div class="col-md-4"><h3><a href="/Listing/@post.Id">@post.Title</a></h3>
+                <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/"/>
+            </div>
+        }
     </div>
 </div>

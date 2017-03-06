@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "ViewPosts";
+}
+<div class="container">
+    <h3>@ViewBag.Route</h3>
+    <ul>
+        @foreach (var post in ViewBag.Posts)
+        {
+            <li><h3>@post.Title</h3> <h4>Price: $@post.Price</h4>  <h4>Posted: @post.Posted</h4></li>
+        }
+    </ul>
+</div>

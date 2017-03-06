@@ -1,9 +1,6 @@
 ﻿
 Pass city info to subcategorie listings
 
-show user postings on userpage
-
-
 make different layout options
 
 

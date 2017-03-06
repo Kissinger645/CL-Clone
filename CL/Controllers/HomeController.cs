@@ -15,7 +15,7 @@ namespace CL.Controllers
         public ActionResult Index()
         {
 
-            ViewBag.States = db.Locations.ToList();
+            ViewBag.Cities = db.Locations.OrderBy(l => l.StateName).ToList();
                 return View();
         }
 
@@ -48,12 +48,22 @@ namespace CL.Controllers
         [Route("c/{City}")]
         public ActionResult City(string City)
         {
-            string city = City;
+            ViewBag.City = City;
             ViewBag.Sale = db.Categories.Where(c => c.Main == "Sale");
             ViewBag.Housing = db.Categories.Where(c => c.Main == "Housing");
             ViewBag.Services = db.Categories.Where(c => c.Main == "Services");
             return View();
         }
+        [Route("c/{City}/{Sub}")]
+        public ActionResult ViewPosts(string City, string Sub)
+        {
+            ViewBag.Route = $"City: {City} - Category: {Sub}";
+            var cat = db.Categories.FirstOrDefault(c => c.Sub == Sub);
+            var city = db.Locations.FirstOrDefault(c => c.CityName == City);
+            ViewBag.Posts = db.Posts.Where(p => p.CatId == cat.Id && p.CityId == city.Id).ToList();
+            return View();
+        }
+
         public ActionResult ChangeCity()
         {
             ViewBag.Cities = new SelectList(db.Locations, "Id","CityName");
@@ -80,5 +90,7 @@ namespace CL.Controllers
             db.SaveChanges();
             return RedirectToAction("UserPage");
         }
+
+        
     }
 }

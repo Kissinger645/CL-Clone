@@ -1,1 +1,19 @@
-﻿
+﻿public ActionResult PostDetails(int? id)
+        {
+            var cId = id.ToString();
+            if (db.ImageUploads.Where(u => u.Caption == cId).FirstOrDefault() != null)
+            {
+                var pic = db.ImageUploads.Where(u => u.Caption == cId).FirstOrDefault();
+                ViewBag.Picture = pic.FilePath;
+            }
+
+            PostModel post = db.Posts.Find(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Post = post;
+            return View();
+        }
+
+		<a href="/c/{city}/@cat.Sub">

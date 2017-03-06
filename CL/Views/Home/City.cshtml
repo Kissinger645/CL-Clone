@@ -4,20 +4,19 @@
 }
 
 <div class="container">
-    <h3>Categories</h3>
 
     <h4>For Sale</h4>
     <ul>
         @foreach (var cat in ViewBag.Sale)
         {
-            <li><a href="/c/{city}/@cat.Sub">@cat.Sub</a></li>
+            <li><a href="/c/@ViewBag.City/@cat.Sub">@cat.Sub</a></li>
         }
     </ul>
     <h4>Housing</h4>
     <ul>
         @foreach (var cat in ViewBag.Housing)
         {
-            <li><a href="/c/{city}/@cat.Sub">@cat.Sub</a></li>
+            <li><a href="/c/{City}/@cat.Sub">@cat.Sub</a></li>
         }
     </ul>
 
@@ -25,7 +24,7 @@
     <ul>
         @foreach (var cat in ViewBag.Services)
         {
-            <li><a href="/c/{city}/@cat.Sub">@cat.Sub</a></li>
+            <li><a href="/c/{City}/@cat.Sub">@cat.Sub</a></li>
         }
     </ul>
 </div>

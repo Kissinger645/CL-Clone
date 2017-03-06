@@ -1,14 +1,12 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<h2>All available Cities</h2>
 <div class="container">
-    <section>
-        <h3>States</h3>
-        <ul>
-            <li><a href="/s/SC">SC</a></li>
-            <li><a href="/s/TX">TX</a></li>
-            <li><a href="/s/IN">IN</a></li>
-        </ul>
-    </section>
-
+    <ul>
+        @foreach (var city in @ViewBag.Cities)
+        {
+            <li><a href="/c/@city.CityName">@city.CityName</a></li>
+        }
+    </ul>
 </div>
